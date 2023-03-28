@@ -14,7 +14,7 @@ async function getPosts() {
 
 const Share = async () => {
   const posts = await getPosts();
-  console.log(posts);
+
   return (
     <main className="max-w-5xl mx-auto">
       <Gallery posts={posts} />

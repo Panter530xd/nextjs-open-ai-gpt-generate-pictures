@@ -81,12 +81,12 @@ export const InputPanel = () => {
       alert(message);
     } finally {
       setisLoading(false);
-      queryClient.invalidateQueries(["posts"]);
-      toast.success("Congratulations, your picture is now public 🚀", {
-        id: toastPostID,
-      });
     }
     router.push("/share");
+    queryClient.invalidateQueries(["posts"]);
+    toast.success("Congratulations, your picture is now public 🚀", {
+      id: toastPostID,
+    });
   };
 
   const handleDownloadImage = () => {
