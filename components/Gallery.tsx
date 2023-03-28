@@ -23,7 +23,7 @@ const CommunityPost: FC<Post> = ({ title, imageUrl, tag }) => {
 
 export const Gallery: FC<GalleryProps> = ({ posts }) => {
   return (
-    <section className="mt-40">
+    <section className="py-20">
       <h1 className="text-white xl:text-5xl text-3xl text-center my-4 underline">
         Community Showcase
       </h1>
