@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import "./globals.css";
+import QueryWrapper from "./auth/QueryWraper";
 
 export const metadata = {
   title: "Create your Image",
@@ -14,8 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className=" bg-openAI_Secondary">
-        <Header />
-        {children}
+        <QueryWrapper>
+          <Header />
+          {children}
+        </QueryWrapper>
       </body>
     </html>
   );

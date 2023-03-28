@@ -6,8 +6,10 @@ import { ImagePreview } from "./ImagePreview";
 import FileSaver from "file-saver";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { useQueryClient } from "@tanstack/react-query";
 
 export const InputPanel = () => {
+  const queryClient = useQueryClient();
   const router = useRouter();
 
   const [userInputs, setUserInputs] = useState({
@@ -47,6 +49,7 @@ export const InputPanel = () => {
         }
       );
       setimageUrl(data.imageUrl);
+      queryClient.invalidateQueries(["openai"]);
     } catch (error) {
       let message = "Unknown error";
       if (error instanceof Error) message = error.message;
@@ -70,6 +73,7 @@ export const InputPanel = () => {
         imageUrl: imageUrl,
         tag: userInputCache.tag,
       });
+      queryClient.invalidateQueries({ queryKey: ["posts"] });
     } catch (error) {
       let message = "Unkown error";
       if (error instanceof Error) message = error.message;
