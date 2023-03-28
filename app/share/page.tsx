@@ -1,6 +1,6 @@
 import { Gallery } from "@/components/Gallery";
 import { prisma } from "@/prisma/prisma";
-
+export const revalidate = 0;
 async function getPosts() {
   // const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/openai`);
   // if (!res.ok) {
