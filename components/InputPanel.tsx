@@ -7,11 +7,12 @@ import FileSaver from "file-saver";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 export const InputPanel = () => {
   const queryClient = useQueryClient();
   const router = useRouter();
-
+  let toastPostID: string;
   const [userInputs, setUserInputs] = useState({
     title: "",
     tag: "",
@@ -49,13 +50,14 @@ export const InputPanel = () => {
         }
       );
       setimageUrl(data.imageUrl);
-      queryClient.invalidateQueries(["openai"]);
     } catch (error) {
       let message = "Unknown error";
       if (error instanceof Error) message = error.message;
       alert(message);
     } finally {
       setisLoading(false);
+      queryClient.invalidateQueries(["openai"]);
+      toast.success("Image has been made 🔥", { id: toastPostID });
     }
     setuserInputCache({ ...userInputs });
     setUserInputs({
@@ -73,13 +75,16 @@ export const InputPanel = () => {
         imageUrl: imageUrl,
         tag: userInputCache.tag,
       });
-      queryClient.invalidateQueries({ queryKey: ["posts"] });
     } catch (error) {
       let message = "Unkown error";
       if (error instanceof Error) message = error.message;
       alert(message);
     } finally {
       setisLoading(false);
+      queryClient.invalidateQueries(["posts"]);
+      toast.success("Congratulations, your picture is now public 🚀", {
+        id: toastPostID,
+      });
     }
     router.push("/share");
   };
