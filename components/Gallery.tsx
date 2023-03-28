@@ -24,7 +24,9 @@ const CommunityPost: FC<Post> = ({ title, imageUrl, tag }) => {
 export const Gallery: FC<GalleryProps> = ({ posts }) => {
   return (
     <section className="mt-40">
-      <h1 className="text-white text-5xl my-4 underline">Community Showcase</h1>
+      <h1 className="text-white xl:text-5xl text-3xl text-center my-4 underline">
+        Community Showcase
+      </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         {posts.map((post) => (
           <CommunityPost key={post.id} {...post} />

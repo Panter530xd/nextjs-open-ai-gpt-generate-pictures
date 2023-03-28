@@ -12,7 +12,7 @@ export const UserInputs: FC<userInputsProps> = ({
       onSubmit={handleSubmit}
       className=" bg-openAI_Primary p-6 flex flex-col space-y-3 rounded-lg"
     >
-      <div className=" flex items-center space-x-3">
+      <div className=" flex items-center justify-center space-x-3">
         <input
           type="text"
           className="input"
