@@ -4,14 +4,26 @@ import { useState } from "react";
 import { UserInputs } from "./UserInputs";
 import { ImagePreview } from "./ImagePreview";
 import FileSaver from "file-saver";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { useRouter } from "next/navigation";
-import { useQueryClient } from "@tanstack/react-query";
+import { useQueryClient, useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
+import { Post } from "@prisma/client";
+import { useSession } from "next-auth/react";
+interface PostData {
+  title: string;
+  imageUrl: string;
+  tag: string;
+}
+
+interface PostResponse {
+  data: Post;
+}
 
 export const InputPanel = () => {
   const queryClient = useQueryClient();
   const router = useRouter();
+  const { status } = useSession();
   let toastPostID: string;
   const [userInputs, setUserInputs] = useState({
     title: "",
@@ -30,6 +42,9 @@ export const InputPanel = () => {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (status === "unauthenticated") {
+      return toast.error("Please Sign in first");
+    }
     if (
       userInputs.title === "" ||
       userInputs.tag === "" ||
@@ -67,26 +82,59 @@ export const InputPanel = () => {
     });
   };
 
-  const handleShareImage = async () => {
-    setisLoading(true);
-    try {
-      const { data } = await axios.post(`/api/posts`, {
-        title: userInputCache.title,
-        imageUrl: imageUrl,
-        tag: userInputCache.tag,
-      });
-    } catch (error) {
-      let message = "Unkown error";
-      if (error instanceof Error) message = error.message;
-      alert(message);
-    } finally {
-      setisLoading(false);
+  // const handleShareImage = async () => {
+  //   setisLoading(true);
+  //   try {
+  //     const { data } = await axios.post(`/api/posts`, {
+  //       title: userInputCache.title,
+  //       imageUrl: imageUrl,
+  //       tag: userInputCache.tag,
+  //     });
+  //   } catch (error) {
+  //     let message = "Unkown error";
+  //     if (error instanceof Error) message = error.message;
+  //     alert(message);
+  //   } finally {
+  //     setisLoading(false);
+  //   }
+  //   router.push("/share");
+  //   queryClient.invalidateQueries(["posts"]);
+  //   toast.success("Congratulations, your picture is now public 🚀", {
+  //     id: toastPostID,
+  //   });
+  // };
+
+  const { mutate } = useMutation(
+    async (postData: PostData): Promise<Post> => {
+      const { data } = await axios.post("/api/posts", postData);
+      return data;
+    },
+    {
+      onError: (error) => {
+        if (error instanceof AxiosError) {
+          toast.error(error?.response?.data.message, { id: toastPostID });
+        }
+        setisLoading(false);
+      },
+      onSuccess: () => {
+        router.push("/share");
+        queryClient.invalidateQueries(["posts"]);
+        toast.success("Congratulations, your picture is now public 🚀", {
+          id: toastPostID,
+        });
+        setisLoading(false);
+      },
     }
-    router.push("/share");
-    queryClient.invalidateQueries(["posts"]);
-    toast.success("Congratulations, your picture is now public 🚀", {
-      id: toastPostID,
-    });
+  );
+
+  const handleShareImage = () => {
+    setisLoading(true);
+    const postData = {
+      title: userInputCache.title,
+      imageUrl: imageUrl,
+      tag: userInputCache.tag,
+    };
+    mutate(postData);
   };
 
   const handleDownloadImage = () => {

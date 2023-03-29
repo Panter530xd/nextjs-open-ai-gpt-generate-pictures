@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import "./globals.css";
-import QueryWrapper from "./auth/QueryWraper";
+import QueryWrapper from "./auth-query/QueryWraper";
+import Footer from "@/components/Footer";
 
 export const metadata = {
   title: "Create your Image",
@@ -9,8 +10,6 @@ export const metadata = {
 
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -18,6 +17,7 @@ export default function RootLayout({
         <QueryWrapper>
           <Header />
           {children}
+          <Footer />
         </QueryWrapper>
       </body>
     </html>
