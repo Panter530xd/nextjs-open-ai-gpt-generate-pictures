@@ -10,14 +10,11 @@ import { useQueryClient, useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import { Post } from "@prisma/client";
 import { useSession } from "next-auth/react";
+
 interface PostData {
   title: string;
   imageUrl: string;
   tag: string;
-}
-
-interface PostResponse {
-  data: Post;
 }
 
 export const InputPanel = () => {
@@ -50,7 +47,7 @@ export const InputPanel = () => {
       userInputs.tag === "" ||
       userInputs.description === ""
     )
-      return alert("Enter all Inputs");
+      return toast.error("Enter all Inputs");
 
     setisLoading(true);
 
@@ -81,28 +78,6 @@ export const InputPanel = () => {
       description: "",
     });
   };
-
-  // const handleShareImage = async () => {
-  //   setisLoading(true);
-  //   try {
-  //     const { data } = await axios.post(`/api/posts`, {
-  //       title: userInputCache.title,
-  //       imageUrl: imageUrl,
-  //       tag: userInputCache.tag,
-  //     });
-  //   } catch (error) {
-  //     let message = "Unkown error";
-  //     if (error instanceof Error) message = error.message;
-  //     alert(message);
-  //   } finally {
-  //     setisLoading(false);
-  //   }
-  //   router.push("/share");
-  //   queryClient.invalidateQueries(["posts"]);
-  //   toast.success("Congratulations, your picture is now public 🚀", {
-  //     id: toastPostID,
-  //   });
-  // };
 
   const { mutate } = useMutation(
     async (postData: PostData): Promise<Post> => {

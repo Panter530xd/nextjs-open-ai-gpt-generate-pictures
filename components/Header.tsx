@@ -8,7 +8,6 @@ import SignOut from "./SignOut";
 
 export default async function Header() {
   const session = await getServerSession(authOptions);
-  console.log(session);
 
   return (
     <header className="w-full bg-openAI_Primary p-8 text-teal-300">
@@ -29,7 +28,7 @@ export default async function Header() {
         </p>
         <div className=" flex items-center">
           <Link
-            className=" uppercase font-semibold text-lg mr-6"
+            className=" uppercase font-semibold text-lg xl:mr-10 mr-7"
             href={"/share"}
           >
             Gallery

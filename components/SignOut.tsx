@@ -7,13 +7,7 @@ type User = {
 };
 export default function SignOut({ image }: User) {
   return (
-    <div className=" flex gap-8 items-center">
-      <button
-        onClick={() => signOut()}
-        className=" bg-teal-500 text-white py-2 px-6 rounded-md"
-      >
-        Sign out
-      </button>
+    <div className=" flex flex-col gap-8 items-center">
       <Link href={"/dashboard"}>
         <Image
           src={image}
@@ -23,6 +17,12 @@ export default function SignOut({ image }: User) {
           className="rounded-full"
         />
       </Link>
+      <button
+        onClick={() => signOut()}
+        className=" bg-teal-500 text-white py-2 px-6 rounded-md"
+      >
+        Sign out
+      </button>
     </div>
   );
 }

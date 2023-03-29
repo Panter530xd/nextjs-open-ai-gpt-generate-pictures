@@ -1,9 +1,11 @@
+"use client";
+
 import { Post } from "@prisma/client";
 import Image from "next/image";
 import { FC } from "react";
 import { GalleryProps } from "@/types";
 import { Button } from "./Button";
-
+import { motion } from "framer-motion";
 const CommunityPost: FC<Post> = ({ title, imageUrl, tag }) => {
   return (
     <article className="bg-openAI_Primary flex flex-col p-5 rounded-lg text-white">
@@ -23,7 +25,12 @@ const CommunityPost: FC<Post> = ({ title, imageUrl, tag }) => {
 
 export const Gallery: FC<GalleryProps> = ({ posts }) => {
   return (
-    <section className="py-20">
+    <motion.section
+      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, scale: 0.8 }}
+      transition={{ ease: "easeOut" }}
+      className="py-20"
+    >
       <h1 className="text-white xl:text-5xl text-3xl text-center my-4 underline">
         Community Showcase
       </h1>
@@ -32,6 +39,6 @@ export const Gallery: FC<GalleryProps> = ({ posts }) => {
           <CommunityPost key={post.id} {...post} />
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
