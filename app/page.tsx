@@ -1,3 +1,4 @@
+"use client";
 import { InputPanel } from "@/components/InputPanel";
 import { motion } from "framer-motion";
 export const revalidate = 0;
