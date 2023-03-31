@@ -29,6 +29,9 @@ export default function Dashboard() {
       transition={{ ease: "easeOut" }}
       className="py-20 max-w-5xl mx-auto"
     >
+      <h3 className="text-teal-300 text-2xl pb-8">
+        Hello how can we help you today {data?.name}
+      </h3>
       <div className="grid grid-cols-2 md:grid-cols-2 gap-2">
         {data?.Post?.map((post: Post) => (
           <CommunityPost key={post.id} {...post} />
