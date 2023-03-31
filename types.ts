@@ -21,3 +21,19 @@ export type userInputsProps = {
 export type GalleryProps = {
 	posts: Post[];
 };
+
+
+export type AuthPosts = {
+  email: string
+  id: string
+  image: string
+  name: string
+  Post: {
+    id: string;
+    title: string;
+    imageUrl: string;
+    tag: string;
+    createdAt: Date;
+    userId: string;
+    }[]
+}

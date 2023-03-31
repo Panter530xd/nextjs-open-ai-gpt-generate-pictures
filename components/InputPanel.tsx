@@ -92,11 +92,12 @@ export const InputPanel = () => {
         setisLoading(false);
       },
       onSuccess: () => {
-        router.push("/share");
-        queryClient.invalidateQueries(["posts"]);
         toast.success("Congratulations, your picture is now public 🚀", {
           id: toastPostID,
         });
+        queryClient.invalidateQueries(["posts"]);
+        router.push("/share");
+
         setisLoading(false);
       },
     }

@@ -8,12 +8,10 @@ export const metadata = {
   description: "Created by boban dev",
 };
 
-export default function RootLayout({
-  children,
-}) {
+export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className=" bg-openAI_Secondary">
+      <body className="min-h-screen flex flex-col bg-openAI_Secondary">
         <QueryWrapper>
           <Header />
           {children}

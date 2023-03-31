@@ -6,7 +6,7 @@ import { FC } from "react";
 import { GalleryProps } from "@/types";
 import { Button } from "./Button";
 import { motion } from "framer-motion";
-const CommunityPost: FC<Post> = ({ title, imageUrl, tag }) => {
+export const CommunityPost: FC<Post> = ({ title, imageUrl, tag }) => {
   return (
     <article className="bg-openAI_Primary flex flex-col p-5 rounded-lg text-white">
       <div className="relative h-[512px] w-auto rounded-lg">
