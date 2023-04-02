@@ -67,7 +67,7 @@ export const InputPanel = () => {
       alert(message);
     } finally {
       setisLoading(false);
-      queryClient.invalidateQueries(["openai"]);
+      queryClient.invalidateQueries(["posts"]);
       toast.success("Image has been made 🔥", { id: toastPostID });
     }
     setuserInputCache({ ...userInputs });
@@ -94,7 +94,7 @@ export const InputPanel = () => {
         toast.success("Congratulations, your picture is now public 🚀", {
           id: toastPostID,
         });
-        queryClient.invalidateQueries(["authpost"]);
+        queryClient.invalidateQueries(["posts"]);
         router.push("/share");
 
         setisLoading(false);
