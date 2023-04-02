@@ -1,6 +1,6 @@
 import { Gallery } from "@/components/Gallery";
 import prisma from "../../prisma/client";
-
+export const revalidate = 0;
 const Share = async () => {
   const posts = await prisma.post.findMany();
 
