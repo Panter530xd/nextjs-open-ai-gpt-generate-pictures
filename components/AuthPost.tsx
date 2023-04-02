@@ -60,6 +60,7 @@ export default function DeletePost({ avatar, name, post, id }: EditProps) {
           <Image
             width={32}
             height={32}
+            priority={true}
             src={avatar}
             alt="avatar"
             className=" rounded-full"

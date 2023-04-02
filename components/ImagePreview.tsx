@@ -15,9 +15,10 @@ export const ImagePreview: FC<ImagePreviewProps> = ({
             <Image
               src={placeholder}
               alt="placeholoder"
-              fill
               className=" object-contain"
               priority={true}
+              width={512}
+              height={512}
             />
           </div>
         ) : (
@@ -25,8 +26,10 @@ export const ImagePreview: FC<ImagePreviewProps> = ({
             <Image
               src={imageUrl}
               alt="Images"
-              fill
+              priority={true}
               className=" object-contain "
+              width={512}
+              height={512}
             />
           </div>
         )}

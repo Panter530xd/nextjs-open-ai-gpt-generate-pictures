@@ -10,7 +10,13 @@ export const CommunityPost: FC<Post> = ({ title, imageUrl, tag }) => {
   return (
     <article className="bg-openAI_Primary flex flex-col p-5 rounded-lg text-white">
       <div className="relative h-[512px] w-auto rounded-lg">
-        <Image src={imageUrl} alt={title} fill className="object-contain " />
+        <Image
+          src={imageUrl}
+          alt={title}
+          priority={true}
+          fill
+          className="object-contain h-[512px] w-auto"
+        />
       </div>
       <h1 className="text-2xl text-white uppercase font-bold tracking-widest sm:mt-2">
         {title}
