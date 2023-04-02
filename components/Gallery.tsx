@@ -2,7 +2,7 @@
 
 import { Post } from "@prisma/client";
 import Image from "next/image";
-import { FC, useRef } from "react";
+import { FC } from "react";
 import { GalleryProps } from "@/types";
 import { motion } from "framer-motion";
 import Button from "./Button";
@@ -30,10 +30,8 @@ export const CommunityPost: FC<Post> = ({ title, imageUrl, tag }) => {
 };
 
 export const Gallery: FC<GalleryProps> = ({ posts }) => {
-  const ref = useRef<HTMLDivElement>(null);
   return (
     <motion.section
-      ref={ref}
       animate={{ opacity: 1, scale: 1 }}
       initial={{ opacity: 0, scale: 0.8 }}
       transition={{ ease: "easeOut" }}
