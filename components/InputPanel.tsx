@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { UserInputs } from "./UserInputs";
 import { ImagePreview } from "./ImagePreview";
@@ -17,7 +16,11 @@ interface PostData {
   tag: string;
 }
 
-export const InputPanel = () => {
+interface InputPanelProps {
+  galleryRef: React.RefObject<HTMLDivElement>;
+}
+
+export const InputPanel = ({ galleryRef }: InputPanelProps) => {
   const queryClient = useQueryClient();
   const router = useRouter();
   const { status } = useSession();
@@ -95,7 +98,7 @@ export const InputPanel = () => {
         toast.success("Congratulations, your picture is now public 🚀", {
           id: toastPostID,
         });
-        queryClient.invalidateQueries(["posts"]);
+        queryClient.invalidateQueries(["authpost"]);
         router.push("/share");
 
         setisLoading(false);
