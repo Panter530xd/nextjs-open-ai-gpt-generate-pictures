@@ -16,11 +16,7 @@ interface PostData {
   tag: string;
 }
 
-interface InputPanelProps {
-  galleryRef: React.RefObject<HTMLDivElement>;
-}
-
-export const InputPanel = ({ galleryRef }: InputPanelProps) => {
+export const InputPanel = () => {
   const queryClient = useQueryClient();
   const router = useRouter();
   const { status } = useSession();
