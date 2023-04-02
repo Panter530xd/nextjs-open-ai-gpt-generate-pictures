@@ -1,8 +1,0 @@
-{
-  "crons": [
-    {
-      "path": "/api/keepactive",
-      "schedule": "0 5 * * *"
-    }
-  ]
-}
