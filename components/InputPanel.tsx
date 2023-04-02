@@ -126,7 +126,7 @@ export const InputPanel = () => {
       />
       <ImagePreview imageUrl={imageUrl} isLoading={isLoading} />
       {imageUrl !== "" && (
-        <div className="flex gap-2 mt-2">
+        <div className="flex gap-2 mt-2 xl:w-full w-10/12 mx-auto">
           <button
             disabled={imageUrl === ""}
             className="btn flex-1 disabled:cursor-not-allowed "

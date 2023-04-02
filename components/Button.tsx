@@ -2,7 +2,7 @@
 
 import FileSaver from "file-saver";
 
-export const Button = ({ imageUrl }: { imageUrl: string }) => {
+const Button = ({ imageUrl }: { imageUrl: string }) => {
   return (
     <button
       className="btn mt-2"
@@ -12,3 +12,4 @@ export const Button = ({ imageUrl }: { imageUrl: string }) => {
     </button>
   );
 };
+export default Button;

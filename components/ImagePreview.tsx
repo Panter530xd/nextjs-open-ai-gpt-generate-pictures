@@ -3,7 +3,6 @@ import { ImagePreviewProps } from "@/types";
 import Image from "next/image";
 import placeholder from "../public/assets/placeholder.png";
 import { Loader } from "./Loader";
-import toast from "react-hot-toast";
 export const ImagePreview: FC<ImagePreviewProps> = ({
   imageUrl,
   isLoading,
@@ -18,6 +17,7 @@ export const ImagePreview: FC<ImagePreviewProps> = ({
               alt="placeholoder"
               fill
               className=" object-contain"
+              priority={true}
             />
           </div>
         ) : (

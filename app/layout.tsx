@@ -8,12 +8,17 @@ export const metadata = {
   description: "Created by boban dev",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  const header = await Header();
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col bg-openAI_Secondary">
         <QueryWrapper>
-          <Header />
+          {header}
           {children}
           <Footer />
         </QueryWrapper>

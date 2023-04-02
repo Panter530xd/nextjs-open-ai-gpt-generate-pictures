@@ -4,8 +4,8 @@ import { Post } from "@prisma/client";
 import Image from "next/image";
 import { FC } from "react";
 import { GalleryProps } from "@/types";
-import { Button } from "./Button";
 import { motion } from "framer-motion";
+import Button from "./Button";
 export const CommunityPost: FC<Post> = ({ title, imageUrl, tag }) => {
   return (
     <article className="bg-openAI_Primary flex flex-col p-5 rounded-lg text-white">

@@ -19,6 +19,7 @@ export default async function Header() {
               alt={"Logo"}
               width={70}
               className="object-contain"
+              priority={true}
             />
           </div>
         </Link>

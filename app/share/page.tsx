@@ -5,7 +5,7 @@ const Share = async () => {
   const posts = await prisma.post.findMany();
 
   return (
-    <main className="max-w-5xl mx-auto">
+    <main className="mx-auto xl:w-8/12 w-full">
       <Gallery posts={posts} />
     </main>
   );
