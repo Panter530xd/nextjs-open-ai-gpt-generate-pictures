@@ -1,5 +1,6 @@
 "use client";
 import AuthPost from "@/components/AuthPost";
+import LoaderSkeleton from "@/components/LoaderSkeleton";
 import { AuthPosts } from "@/types";
 import { Post } from "@prisma/client";
 import { useQuery } from "@tanstack/react-query";
@@ -8,7 +9,7 @@ import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 
-const fetchAuthPosts = async () => {
+export const fetchAuthPosts = async () => {
   const response = await axios.get("/api/posts");
   return response.data.data;
 };
@@ -25,7 +26,7 @@ export default function Dashboard() {
     return toast.error("Please Sign in first");
   }
   if (isLoading) {
-    return <h1 className="text-teal-300">Posts are Loading....</h1>;
+    return <LoaderSkeleton />;
   }
 
   return (
@@ -35,9 +36,11 @@ export default function Dashboard() {
       transition={{ ease: "easeOut" }}
       className="py-20  xl:w-8/12 w-full mx-auto"
     >
-      <h3 className="text-teal-300 text-2xl pb-8 xl:ml-0 ml-10">
-        Hello {data?.name}
-      </h3>
+      {data?.name && (
+        <h3 className="text-teal-300 text-2xl pb-8 xl:ml-0 ml-10">
+          Hello {data.name}
+        </h3>
+      )}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         {data?.Post?.map((post: Post) => (
           <AuthPost

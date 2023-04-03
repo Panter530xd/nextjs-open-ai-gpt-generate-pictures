@@ -1,4 +1,3 @@
-import  prisma  from "../../../prisma/client";
 import { NextResponse } from "next/server";
 
 import { Configuration, OpenAIApi } from "openai";
@@ -8,19 +7,20 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-export async function GET(request: Request) {
-    const posts = await prisma.post.findMany();
-  return NextResponse.json({posts}, {status:200})
-}
-
 export async function POST(request: Request) {
- const {description}= await request.json()
- const openAiresponse = await openai.createImage({
-    prompt : description,
-    n:1,
-    size:"512x512"
- })
-
- const imageUrl = openAiresponse.data.data[0].url;
- return NextResponse.json({imageUrl},{status:200});
+  try {
+    const { description } = await request.json();
+    const openAiresponse = await openai.createImage({
+      prompt: description,
+      n: 1,
+      size: "512x512",
+    });
+    const imageUrl = openAiresponse.data.data[0].url;
+    return NextResponse.json({ imageUrl }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(
+      { err: "Error has occured while making a post" },
+      { status: 403 }
+    );
+  }
 }

@@ -28,7 +28,7 @@ export const CommunityPost: FC<Post> = ({ title, imageUrl, tag }) => {
   );
 };
 
-export const Gallery: FC<GalleryProps> = ({ posts }) => {
+export const Gallery: FC<GalleryProps> = ({ Post }) => {
   return (
     <motion.section
       animate={{ opacity: 1, scale: 1 }}
@@ -40,9 +40,8 @@ export const Gallery: FC<GalleryProps> = ({ posts }) => {
         Community Showcase
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-        {posts.map((post) => (
-          <CommunityPost key={post.id} {...post} />
-        ))}
+        {Array.isArray(Post) &&
+          Post.map((post) => <CommunityPost key={post.id} {...post} />)}
       </div>
     </motion.section>
   );

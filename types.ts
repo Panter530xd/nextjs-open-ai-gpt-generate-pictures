@@ -1,33 +1,32 @@
 import { Post } from "@prisma/client";
 
 export type TUserInput = {
-	title: string;
-	tag: string;
-	description: string;
+  title: string;
+  tag: string;
+  description: string;
 };
 
 export type ImagePreviewProps = {
-	imageUrl: string;
-	isLoading: boolean;
+  imageUrl: string;
+  isLoading: boolean;
 };
 
 export type userInputsProps = {
-	handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
-	userInputs: TUserInput;
-	setUserInputs: React.Dispatch<React.SetStateAction<TUserInput>>;
-	isLoading: boolean;
+  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
+  userInputs: TUserInput;
+  setUserInputs: React.Dispatch<React.SetStateAction<TUserInput>>;
+  isLoading: boolean;
 };
 
 export type GalleryProps = {
-	posts: Post[];
+  Post: Post[];
 };
 
-
 export type AuthPosts = {
-  email: string
-  id: string
-  image: string
-  name: string
+  email: string;
+  id: string;
+  image: string;
+  name: string;
   Post: {
     id: string;
     title: string;
@@ -35,5 +34,5 @@ export type AuthPosts = {
     tag: string;
     createdAt: Date;
     userId: string;
-    }[]
-}
+  }[];
+};

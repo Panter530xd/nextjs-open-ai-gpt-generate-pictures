@@ -31,7 +31,7 @@ export default function DeletePost({ avatar, name, post, id }: EditProps) {
 
   const { mutate } = useMutation(
     async (id: string) => {
-      const res = await axios.delete(`/api/postsauth/${id}`);
+      const res = await axios.delete(`/api/posts/${id}`);
     },
     {
       onError: () => {

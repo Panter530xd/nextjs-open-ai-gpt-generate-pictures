@@ -13,3 +13,11 @@ const Button = ({ imageUrl }: { imageUrl: string }) => {
   );
 };
 export default Button;
+
+// interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+//   children: React.ReactNode;
+// }
+
+// const ButtonExample = ({ children, ...props }: Props) => {
+//   return <button {...props}>{children}</button>;
+// };

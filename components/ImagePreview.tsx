@@ -3,6 +3,7 @@ import { ImagePreviewProps } from "@/types";
 import Image from "next/image";
 import placeholder from "../public/assets/placeholder.png";
 import { Loader } from "./Loader";
+
 export const ImagePreview: FC<ImagePreviewProps> = ({
   imageUrl,
   isLoading,
@@ -35,7 +36,7 @@ export const ImagePreview: FC<ImagePreviewProps> = ({
         )}
         {isLoading && (
           <div className="absolute inset-0 flex items-center justify-center">
-            {<Loader />}
+            <Loader />
           </div>
         )}
       </div>
