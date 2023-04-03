@@ -29,14 +29,6 @@ export default function Dashboard() {
     return <LoaderSkeleton />;
   }
 
-  if (!data || data.Post?.length === 0) {
-    return (
-      <div className="text-teal-300 xl:text-4xl text-center pt-10">
-        No posts to display.
-      </div>
-    );
-  }
-
   return (
     <motion.article
       animate={{ opacity: 1, scale: 1 }}
@@ -44,9 +36,13 @@ export default function Dashboard() {
       transition={{ ease: "easeOut" }}
       className="py-20  xl:w-8/12 w-full mx-auto"
     >
-      {data?.name && (
+      {data?.Post?.length ? (
         <h3 className="text-teal-300 text-2xl pb-8 xl:ml-0 ml-10">
           Hello {data.name}
+        </h3>
+      ) : (
+        <h3 className="text-teal-300 xl:text-4xl pb-8 xl:ml-0 ml-10 text-center">
+          No Posts. Please make some posts
         </h3>
       )}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
