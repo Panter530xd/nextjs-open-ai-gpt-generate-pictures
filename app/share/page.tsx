@@ -20,7 +20,7 @@ const Share = () => {
     return <LoaderSkeleton />;
   }
 
-  if (!posts || posts.length === 0) {
+  if (posts?.length === 0) {
     return (
       <main className="mx-auto xl:w-8/12 w-full" id="div-share">
         <p className="text-teal-300 xl:text-4xl text-center pt-10">

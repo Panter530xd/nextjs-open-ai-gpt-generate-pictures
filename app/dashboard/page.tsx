@@ -36,13 +36,13 @@ export default function Dashboard() {
       transition={{ ease: "easeOut" }}
       className="py-20  xl:w-8/12 w-full mx-auto"
     >
-      {data?.Post?.length ? (
-        <h3 className="text-teal-300 text-2xl pb-8 xl:ml-0 ml-10">
-          Hello {data.name}
+      {data?.Post?.length === 0 ? (
+        <h3 className="text-teal-300 text-2xl pb-8 xl:ml-0 ml-10 text-center">
+          No Posts. Please make some posts
         </h3>
       ) : (
-        <h3 className="text-teal-300 xl:text-4xl pb-8 xl:ml-0 ml-10 text-center">
-          No Posts. Please make some posts
+        <h3 className="text-teal-300 xl:text-4xl pb-8 xl:ml-0 ml-10 ">
+          Hello {data?.name}
         </h3>
       )}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
