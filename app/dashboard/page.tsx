@@ -37,7 +37,7 @@ export default function Dashboard() {
       className="py-20  xl:w-8/12 w-full mx-auto"
     >
       {data?.Post?.length === 0 ? (
-        <h3 className="text-teal-300 text-2xl pb-8 xl:ml-0 ml-10 text-center">
+        <h3 className="text-teal-300 text-2xl pb-8 xl:ml-0  text-center">
           No Posts. Please make some posts
         </h3>
       ) : (
