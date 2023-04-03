@@ -29,6 +29,14 @@ export default function Dashboard() {
     return <LoaderSkeleton />;
   }
 
+  if (!data || data.Post?.length === 0) {
+    return (
+      <div className="text-teal-300 xl:text-4xl text-center pt-10">
+        No posts to display.
+      </div>
+    );
+  }
+
   return (
     <motion.article
       animate={{ opacity: 1, scale: 1 }}

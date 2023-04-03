@@ -23,7 +23,7 @@ const Share = () => {
   if (!posts || posts.length === 0) {
     return (
       <main className="mx-auto xl:w-8/12 w-full" id="div-share">
-        <p className="text-teal-300 text-4xl text-center pt-10">
+        <p className="text-teal-300 xl:text-4xl text-center pt-10">
           No posts found. Please Sign In to Make a Post.
         </p>
       </main>
