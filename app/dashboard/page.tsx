@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import { useSession } from "next-auth/react";
 import toast from "react-hot-toast";
 
-export const fetchAuthPosts = async () => {
+const fetchAuthPosts = async () => {
   const response = await axios.get("/api/posts");
   return response.data.data;
 };
