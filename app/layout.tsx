@@ -2,6 +2,8 @@ import Header from "@/components/Header";
 import "./globals.css";
 import QueryWrapper from "./auth-query/QueryWraper";
 import Footer from "@/components/Footer";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 export const metadata = {
   title: "Create your Image",
@@ -19,6 +21,7 @@ export default async function RootLayout({
       <body className="min-h-screen flex flex-col bg-openAI_Secondary">
         <QueryWrapper>
           {header}
+          <Suspense fallback={<Loading />} />
           {children}
           <Footer />
         </QueryWrapper>
