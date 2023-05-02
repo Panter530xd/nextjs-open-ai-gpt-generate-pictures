@@ -29,7 +29,7 @@ export default async function Header() {
         </p>
         <div className=" flex items-center">
           <Link
-            className=" uppercase font-semibold text-lg xl:mr-10 mr-7"
+            className=" uppercase font-semibold text-lg xl:mr-10 mr-7 cursor-pointer"
             href={"/share"}
           >
             Gallery
