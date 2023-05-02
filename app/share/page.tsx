@@ -14,7 +14,7 @@ const fetchAllPosts = async (): Promise<Post[]> => {
 const Share = () => {
   const { data: posts, isLoading } = useQuery<Post[]>({
     queryFn: fetchAllPosts,
-    queryKey: ["authpost"],
+    queryKey: ["posts"],
   });
   if (isLoading) {
     return <LoaderSkeleton />;
