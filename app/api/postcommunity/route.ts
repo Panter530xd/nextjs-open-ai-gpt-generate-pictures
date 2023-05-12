@@ -14,3 +14,4 @@ export async function GET(request: Request) {
     );
   }
 }
+export const revalidate = 0;
